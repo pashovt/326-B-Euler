@@ -16,7 +16,6 @@ L5 = 203/ToMeter;
 degreeOfTilt = 43.62;
 
 % Beam length
-ShapeLength = L1 + L3 + L5 + 2*(L2*cosd(degreeOfTilt));
 Length = L1 + L2 + L3 + L4 + L5;
 
 % ZY view parameters
@@ -53,7 +52,7 @@ syms B4
 syms k
 syms x
 syms W(x)
-% free - free beam => w'''=0 & w''=0
+% free - free beam => BC : w'''=0 & w''=0
 C1 = B1*cosh(k*x);
 C2 = B2*sinh(k*x);
 C3 = B3*cos(k*x);
@@ -110,9 +109,13 @@ kL(3) = 10.996;
 kL(4) = 14.137;
 kL(5) = 17.279;
 
-k = kL/Length;
+k = kL/Length
 
+BC1
+BC2
+BC3
+BC4
 
 % Euler formula
-omega = sqrt(((YoungsModulus*Ix)/(Density*TotalArea))*k.^4);
+omega = sqrt(((YoungsModulus*Ix)/(Density*TotalArea))*k.^4)
 NaturalFrequency = omega/(2*pi)
