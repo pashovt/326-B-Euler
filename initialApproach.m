@@ -17,6 +17,7 @@ degreeOfTilt = 43.62;
 
 % Beam length
 Length = L1 + L2 + L3 + L4 + L5;
+ShapeLength = L1 + L3 + L5 + 2*cosd(degreeOfTilt)*L2;
 
 % ZY view parameters
 thickness = 4.8;
@@ -66,8 +67,8 @@ FirstCondition = diff(W, x, 2);
 SecondCondition = diff(W, x, 3);
 BC1 = FirstCondition(0);
 BC2 = SecondCondition(0);
-BC3 = FirstCondition(Length);
-BC4 = SecondCondition(Length);
+BC3 = FirstCondition(ShapeLength);
+BC4 = SecondCondition(ShapeLength);
 
 % BC1 = B1*k^2 - B3*k^2 => B1 - B3 = 0 => B1 = B3
 % BC2 = B2*k^3 - B4*k^3 => B2 - B4 = 0 => B2 = B4
@@ -109,7 +110,7 @@ kL(3) = 10.996;
 kL(4) = 14.137;
 kL(5) = 17.279;
 
-k = kL/Length
+k = kL/ShapeLength
 
 BC1
 BC2
